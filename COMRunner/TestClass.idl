@@ -1,0 +1,39 @@
+
+ 
+// Interface
+[
+	object,
+	uuid(67E11FF0-C068-4C48-A1F5-69A882E0E99A),
+	helpstring("Leos Test Class"),
+	pointer_default(unique),
+	dual,
+	oleautomation
+]
+interface ITestClass : IDispatch
+{
+	import "oaidl.idl";
+	HRESULT SetData([in] BSTR data);
+	HRESULT Run();
+};
+
+// Type Library
+[
+	uuid("67E11FF1-C068-4C48-A1F5-69A882E0E99A"),
+	version(1.0),
+	helpstring("TestClass Type Library")
+]
+library TestClassLib
+{
+	importlib("stdole32.tlb");
+	
+	[
+		uuid("67E11FF2-C068-4C48-A1F5-69A882E0E99A"),
+		helpstring("TestClass Component Class")
+	]
+	coclass TestClass
+	{
+		[default] interface ITestClass;
+	};
+};
+	
+	
